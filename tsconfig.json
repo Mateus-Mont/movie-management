@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
     "target": "es2016",
     "module": "commonjs",
     "typeRoots": ["src/@types", "node_modules/@types"],
@@ -7,6 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "exactOptionalPropertyTypes": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true
   },
   "include": ["src"],

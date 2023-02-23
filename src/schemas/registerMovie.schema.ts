@@ -7,6 +7,8 @@ export const registerMovieSchema=z.object({
     price:z.number()
 })
 
+export const movieUpdateSchema = registerMovieSchema.partial()
+
 export const returnMovieSchema=registerMovieSchema.extend({
     id:z.number()
 })

@@ -1,11 +1,11 @@
 import  {Request,Response}  from "express"
-import { Movies } from "../../entities/movie.entitie";
+import { Movie } from "../../entities/movie.entitie";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 
 export const deleteMovieService=async(idMovie:number):Promise<void>=>{
 
-    const movieRepository:Repository<Movies>=AppDataSource.getRepository(Movies)
+    const movieRepository:Repository<Movie>=AppDataSource.getRepository(Movie)
 
     const movie= await movieRepository.findOneBy({
         id:idMovie

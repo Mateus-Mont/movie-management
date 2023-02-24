@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { Movies } from "../../entities/movie.entitie";
+import { Movie } from "../../entities/movie.entitie";
 import {
   iMovieResult,
   iMovieUpdate,
@@ -11,8 +11,8 @@ export const updateMovieService = async (
   newMovieData: iMovieUpdate,
   idMovie: number
 ): Promise<iMovieResult> => {
-  const movieRepository: Repository<Movies> =
-    AppDataSource.getRepository(Movies);
+  const movieRepository: Repository<Movie> =
+    AppDataSource.getRepository(Movie);
 
   const oldUserData = await movieRepository.findOneBy({
     id: idMovie,

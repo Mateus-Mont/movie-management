@@ -1,11 +1,11 @@
 import { NextFunction, Request,Response } from "express"
 import { Repository } from "typeorm"
-import { Movies } from "../entities/movie.entitie"
+import { Movie } from "../entities/movie.entitie"
 import { AppDataSource } from "../data-source"
 import { AppError } from "../errors"
 
 export const ensureNameMovieExists=async(req:Request,res:Response,next:NextFunction):Promise<void>=>{
-    const movieRepository:Repository<Movies>=AppDataSource.getRepository(Movies)
+    const movieRepository:Repository<Movie>=AppDataSource.getRepository(Movie)
 
     const nameMovie:string=req.body.name
     

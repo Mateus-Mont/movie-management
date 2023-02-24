@@ -9,9 +9,9 @@ import { Entity,
 } from "typeorm";
 
 
-@Entity("movies")
+@Entity("Movie")
 
-export class Movies{
+export class Movie{
     @PrimaryGeneratedColumn("increment")
     id:number
 

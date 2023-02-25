@@ -16,7 +16,7 @@ export const ensureNameMovieExists=async(req:Request,res:Response,next:NextFunct
     })
 
     if(findMovie){
-          throw  new AppError("Movie already exists", 409)
+          throw  new AppError("Movie already exists.", 409)
     }
 
     return next()

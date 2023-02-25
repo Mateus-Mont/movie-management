@@ -1,15 +1,16 @@
 import { Router } from "express";
 import {ensureDataIsValidMiddleware} from "../middlewares/ensureDataRegisterValid.middlewares"
-import {registerMovieSchema} from "../schemas/registerMovie.schema"
-import {deleteMovieController, registerMovieController} from "../controllers/movies.controller"
-import {ensureDataUpdateIsValidMiddleware} from "../middlewares/ensureDataUpdateValid.middlewares"
-import {movieUpdateSchema} from "../schemas/registerMovie.schema"
-import {updateMovieController}  from "../controllers/movies.controller"
-import {ensureMovieExistsMiddleware} from "../middlewares/ensureMovieExists.middlewares"
+import {registerMovieSchema} from "../schemas/registerMovie.schema";
+import {deleteMovieController, getMoviesController, registerMovieController} from "../controllers/movies.controller";
+import {ensureDataUpdateIsValidMiddleware} from "../middlewares/ensureDataUpdateValid.middlewares";
+import {movieUpdateSchema} from "../schemas/registerMovie.schema";
+import {updateMovieController}  from "../controllers/movies.controller";
+import {ensureMovieExistsMiddleware} from "../middlewares/ensureMovieExists.middlewares";
 import { ensureNameMovieExists } from "../middlewares/ensureNameMovieExists.middlewares";
 
-export const userRoutes:Router=Router()
+export const userRoutes:Router=Router();
 
-userRoutes.post("",ensureDataIsValidMiddleware(registerMovieSchema),ensureNameMovieExists,registerMovieController)
+userRoutes.post("",ensureDataIsValidMiddleware(registerMovieSchema),ensureNameMovieExists,registerMovieController);
+userRoutes.get("",getMoviesController)
 userRoutes.patch("/:id",ensureMovieExistsMiddleware,ensureDataUpdateIsValidMiddleware(movieUpdateSchema),ensureNameMovieExists,updateMovieController)
 userRoutes.delete("/:id",ensureMovieExistsMiddleware,deleteMovieController)

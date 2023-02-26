@@ -10,7 +10,7 @@ export const allMoviesService = async (page: any, perpage: any) => {
       page = 1
     }
   
-    if (parseInt(perpage) < 1 || parseInt(perpage) > 1) {
+    if (parseInt(perpage) < 1 || parseInt(perpage) > 5) {
       perpage = 5
     }
   
@@ -37,7 +37,7 @@ export const allMoviesService = async (page: any, perpage: any) => {
     
     const prevPage = page > 1 ? `http://localhost:3000/movies?page=${page - 1}&perPage=${perpage}` : null
     
-    const nextPage = page < totalPages ? `http://localhost:3000/movies?page=${page + 1}&perPage=${perpage}` : null
+    const nextPage = page < totalPages ? `http://localhost:3000/movies?page=${(page * 1)+1}&perPage=${perpage}` : null
     
     return {
       prevPage,

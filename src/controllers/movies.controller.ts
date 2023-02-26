@@ -13,7 +13,10 @@ export const registerMovieController = async (req: Request, res: Response) => {
 };
 
 export const getMoviesController=async(req:Request,res:Response)=>{
-  const movies=await allMoviesService()
+
+  const {page,perpage}=req.query
+
+  const movies=await allMoviesService(page,perpage)
 
   return  res.json(movies)
 }

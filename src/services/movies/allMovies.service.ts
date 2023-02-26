@@ -4,14 +4,17 @@ import { AppDataSource } from "../../data-source";
 import { iMovies } from "../../interfaces/movies.interface";
 import { allMoviesSchema } from "../../schemas/registerMovie.schema";
 
-export const allMoviesService=async():Promise<iMovies>=>{
+export const allMoviesService=async(page:any,perpage:any):Promise<iMovies>=>{
 
     const  movieRepository:Repository<Movie>=AppDataSource.getRepository(Movie)
 
-    const findMovies:Array<Movie>=await  movieRepository.find({
+    const take:number=parseInt(perpage) || 5
+    const skip:number=parseInt(page) || 1 
 
-        take: 3, // Como se fosse LIMIT
-        skip: 2, //Como se fosse OFFSET
+
+    const findMovies:Array<Movie>=await  movieRepository.find({
+        take,
+        skip:take*(skip-1),
         order: {
             name: 'ASC'
         }

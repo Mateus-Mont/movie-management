@@ -10,9 +10,7 @@ export const dataSourceConfig = (): DataSourceOptions => {
   const dbUrl: string | undefined = process.env.DATABASE_URL;
   const nodeEnv: string | undefined = process.env.NODE_ENV;
 
-  if (!dbUrl) {
-    throw new Error("Env var DATABASE_URL, does not exists");
-  }
+
 
   if (nodeEnv === "test") {
     return {
@@ -22,7 +20,9 @@ export const dataSourceConfig = (): DataSourceOptions => {
       entities: [entitiesPath],
     };
   }
-
+  if (!dbUrl) {
+    throw new Error("Env var DATABASE_URL, does not exists");
+  }
   return {
     type: "postgres",
     url: process.env.DATABASE_URL!,

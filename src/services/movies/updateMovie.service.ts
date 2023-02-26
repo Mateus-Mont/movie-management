@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Movie } from "../../entities/movie.entitie";
+import { AppError } from "../../errors";
 import { iMovieResult, iMovieUpdate } from "../../interfaces/movies.interface";
 import { returnMovieSchema } from "../../schemas/registerMovie.schema";
 
@@ -13,6 +14,8 @@ export const updateMovieService = async (
   const oldUserData = await movieRepository.findOneBy({
     id: idMovie,
   });
+
+
 
   const movie = movieRepository.create({
     ...oldUserData,

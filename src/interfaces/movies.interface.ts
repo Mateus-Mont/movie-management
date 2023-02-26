@@ -16,5 +16,4 @@ export type iMovieUpdate = DeepPartial<iDataMovie>
 
 
 export interface  iMovieRepo extends Repository<Movie>{
-
 }

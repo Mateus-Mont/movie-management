@@ -27,7 +27,7 @@ export const updateMovieController = async (req: Request, res: Response) => {
 
   const updateMovie = await updateMovieService(movieData, idMovie);
 
-  return res.json(updateMovie);
+  return res.status(200).json(updateMovie);
 };
 
 export const deleteMovieController = async (req: Request, res: Response) => {

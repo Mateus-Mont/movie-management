@@ -12,5 +12,5 @@ export const userRoutes:Router=Router();
 
 userRoutes.post("",ensureDataIsValidMiddleware(registerMovieSchema),ensureNameMovieExists,registerMovieController);
 userRoutes.get("",getMoviesController)
-userRoutes.patch("/:id",ensureMovieExistsMiddleware,ensureNameMovieExists,ensureDataUpdateIsValidMiddleware(movieUpdateSchema),updateMovieController)
+userRoutes.patch("/:id",ensureMovieExistsMiddleware,ensureDataUpdateIsValidMiddleware(movieUpdateSchema),updateMovieController)
 userRoutes.delete("/:id",ensureMovieExistsMiddleware,deleteMovieController)

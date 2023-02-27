@@ -3,8 +3,9 @@ import { Movie } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { iMovies } from "../../interfaces/movies.interface";
 import { allMoviesSchema } from "../../schemas/registerMovie.schema";
+import { AppError } from "../../errors";
 
-export const allMoviesService = async (page: any, perpage: any) => {
+export const allMoviesService = async (page: any, perpage: any)=> {
 
     if (parseInt(page) < 1) {
       page = 1
@@ -27,10 +28,10 @@ export const allMoviesService = async (page: any, perpage: any) => {
       }
     })
 
-    console.log(movieRepository.count())
+
    
-   const count=movies.length
-    
+    const count=movies.length
+   
     const data = allMoviesSchema.parse(movies)
     
     const totalPages = Math.ceil(quantity / take)
@@ -39,6 +40,8 @@ export const allMoviesService = async (page: any, perpage: any) => {
     
     const nextPage = page < totalPages ? `http://localhost:3000/movies?page=${(page * 1)+1}&perPage=${perpage}` : null
     
+
+
     return {
       prevPage,
       nextPage,

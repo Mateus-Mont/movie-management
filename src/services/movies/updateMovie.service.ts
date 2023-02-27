@@ -16,12 +16,10 @@ export const updateMovieService = async (
   });
 
 
-if(oldUserData?.name===newMovieData.name){
+if(oldUserData?.name===newMovieData.name ){
   throw new AppError("Movie already exists.",409)
 }
 
-
-console.log(newMovieData)
 
   const movie = movieRepository.create({
     ...oldUserData,

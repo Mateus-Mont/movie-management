@@ -35,13 +35,20 @@ export const allMoviesService = async (page: any, perpage: any) => {
   
   const totalPages: number = Math.ceil(quantity / take);
   
-  
-  let prevPage: string | null =
+  const prevPage: string | null =
   page > 1 ? `${baseUrl}${page - 1}&perPage=${perpage}` : null;
- 
-  let nextPage: string | null =
-  page < totalPages || !page ?  `${baseUrl}${page * 1 + 1}&perPage=${perpage}` : null;
-
+  
+  if (!page || !perpage) {
+    page = 1;
+    perpage = 5;
+    count=quantity
+    
+  }
+  const nextPage: string | null =
+  page < totalPages ? `${baseUrl}${page * 1 + 1}&perPage=${perpage}` : null;
+  if(!perpage){
+    
+  }
 
   return {
     prevPage,

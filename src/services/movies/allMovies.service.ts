@@ -17,12 +17,7 @@ export const allMoviesService = async (page: any, perpage: any) => {
 
   let take: number = parseInt(perpage) || 5;
   let skip: number = (parseInt(page) - 1) * parseInt(perpage) || 0;
-
-  if (!page || !perpage) {
-    page = 1;
-    perpage = 5;
-  }
-
+  
   const [movies, quantity] = await movieRepository.findAndCount({
     take,
     skip,
@@ -30,18 +25,25 @@ export const allMoviesService = async (page: any, perpage: any) => {
       id: "ASC",
     },
   });
-
+  
+  
   const baseUrl: string = "http://localhost:3000/movies?page=";
-
-  const count: number = movies.length;
-
+  
+  let count: number = movies.length;
+  
   const data: Array<Movie> = allMoviesSchema.parse(movies);
-
+  
   const totalPages: number = Math.ceil(quantity / take);
-
+  
   const prevPage: string | null =
-    page > 1 ? `${baseUrl}${page - 1}&perPage=${perpage}` : null;
-
+  page > 1 ? `${baseUrl}${page - 1}&perPage=${perpage}` : null;
+  
+  if (!page || !perpage) {
+    page = 1;
+    perpage = 5;
+    count=quantity
+    
+  }
   const nextPage: string | null =
     page < totalPages ? `${baseUrl}${page * 1 + 1}&perPage=${perpage}` : null;
 

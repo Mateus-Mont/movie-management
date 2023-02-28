@@ -1,14 +1,10 @@
 import { Entity, 
     Column,
     PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn
-
 } from "typeorm";
 
 
-@Entity("Movie")
+@Entity("movies")
 
 export class Movie{
     @PrimaryGeneratedColumn("increment")

@@ -10,7 +10,7 @@ import { Movie } from "../entities";
 
 export type iDataMovie=z.infer<typeof registerMovieSchema>
 export type iMovieResult=z.infer<typeof returnMovieSchema> 
-export  type iMovies=z.infer<typeof allMoviesSchema>
+export type iMovies=z.infer<typeof allMoviesSchema>
 
 export type iMovieUpdate = DeepPartial<iDataMovie>
 

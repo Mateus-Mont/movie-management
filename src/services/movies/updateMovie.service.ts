@@ -11,18 +11,18 @@ export const updateMovieService = async (
 ): Promise<iMovieResult> => {
   const movieRepository: Repository<Movie> = AppDataSource.getRepository(Movie);
 
-  const oldUserData = await movieRepository.findOneBy({
+  const oldMovieData = await movieRepository.findOneBy({
     id: idMovie,
   });
 
 
-if(oldUserData?.name===newMovieData.name ){
+if(oldMovieData?.name===newMovieData.name ){
   throw new AppError("Movie already exists.",409)
 }
 
 
   const movie = movieRepository.create({
-    ...oldUserData,
+    ...oldMovieData,
     ...newMovieData
   });
 

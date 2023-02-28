@@ -1,4 +1,3 @@
-import  {Request,Response}  from "express"
 import { Movie } from "../../entities/movie.entitie";
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";

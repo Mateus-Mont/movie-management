@@ -4,6 +4,7 @@ import { AppDataSource } from "../../data-source";
 import { allMoviesSchema } from "../../schemas/registerMovie.schema";
 
 export const allMoviesService = async (page: any, perpage: any) => {
+  
   if (isNaN(parseInt(page))) {
     page = 1;
   } else if (parseInt(page) < 1) {
@@ -41,11 +42,9 @@ export const allMoviesService = async (page: any, perpage: any) => {
 
   const totalPages: number = Math.ceil(quantity / take);
 
-  const prevPage: string | null =
-    page > 1 ? `${baseUrl}${page - 1}&perPage=${perpage}` : null;
+  const prevPage: string | null =page > 1 ? `${baseUrl}${page - 1}&perPage=${perpage}` : null;
 
-    const nextPage: string | null =
-    page <totalPages ? `${baseUrl}${page * 1+1}&perPage=${perpage}` : null;
+  const nextPage: string | null =page < totalPages ? `${baseUrl}${page * 1+1}&perPage=${perpage}` : null;
 
   return {
     prevPage,

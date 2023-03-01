@@ -15,15 +15,13 @@ export const updateMovieService = async (
     id: idMovie,
   });
 
-
-if(oldMovieData?.name===newMovieData.name ){
-  throw new AppError("Movie already exists.",409)
-}
-
+  if (oldMovieData?.name === newMovieData.name) {
+    throw new AppError("Movie already exists.", 409);
+  }
 
   const movie = movieRepository.create({
     ...oldMovieData,
-    ...newMovieData
+    ...newMovieData,
   });
 
   await movieRepository.save(movie);
